@@ -1,7 +1,0 @@
-﻿  Source.cpp
-e:\visual studio\project euler\largest palindrome product\source.cpp(24): warning C4101: 'isit': unreferenced local variable
-e:\visual studio\project euler\largest palindrome product\source.cpp(44): warning C4018: '<': signed/unsigned mismatch
-e:\visual studio\project euler\largest palindrome product\source.cpp(46): warning C4018: '<': signed/unsigned mismatch
-e:\visual studio\project euler\largest palindrome product\source.cpp(77): warning C4018: '<': signed/unsigned mismatch
-  Largest palindrome product.vcxproj -> E:\Visual Studio\Project Euler\Debug\Largest palindrome product.exe
-  Largest palindrome product.vcxproj -> E:\Visual Studio\Project Euler\Debug\Largest palindrome product.pdb (Partial PDB)

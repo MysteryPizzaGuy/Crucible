@@ -1,5 +1,0 @@
-﻿  Source.cpp
-e:\visual studio\testbed\vjezbe2,  zad12\source.cpp(8): warning C4305: 'initializing': truncation from 'double' to 'float'
-e:\visual studio\testbed\vjezbe2,  zad12\source.cpp(9): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Vjezbe2,  Zad12.vcxproj -> E:\Visual Studio\Testbed\Debug\Vjezbe2,  Zad12.exe
-  Vjezbe2,  Zad12.vcxproj -> E:\Visual Studio\Testbed\Debug\Vjezbe2,  Zad12.pdb (Partial PDB)
