@@ -1,0 +1,5 @@
+﻿  Radius Kruga.cpp
+e:\visual studio\testbed\firepit\radius kruga.cpp(11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\visual studio\testbed\firepit\radius kruga.cpp(12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Radius Kruga.vcxproj -> E:\Visual Studio\Testbed\Debug\Radius Kruga.exe
+  Radius Kruga.vcxproj -> E:\Visual Studio\Testbed\Debug\Radius Kruga.pdb (Partial PDB)

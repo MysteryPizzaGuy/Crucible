@@ -1,0 +1,5 @@
+﻿  Source.cpp
+e:\visual studio\testbed\vjezbe 5, zad 7\source.cpp(42): warning C4018: '<': signed/unsigned mismatch
+e:\visual studio\testbed\vjezbe 5, zad 7\source.cpp(44): warning C4018: '<': signed/unsigned mismatch
+  Vjezbe 5, Zad 7.vcxproj -> E:\Visual Studio\Testbed\Debug\Vjezbe 5, Zad 7.exe
+  Vjezbe 5, Zad 7.vcxproj -> E:\Visual Studio\Testbed\Debug\Vjezbe 5, Zad 7.pdb (Partial PDB)
