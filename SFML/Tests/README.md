@@ -1,0 +1,1 @@
+Mainly trying out some stuff from SFML Essentials and other tutorials I can track down.
