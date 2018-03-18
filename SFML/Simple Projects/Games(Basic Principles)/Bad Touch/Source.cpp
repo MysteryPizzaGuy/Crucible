@@ -16,8 +16,10 @@ int main() {
 	InitRect(player, spawnpoint, sf::Color::Blue);
 	const int Howmanyenemies = 5;
 	EvilBlocks enemies (Howmanyenemies);
+	bool focus = true;
 	while (window.isOpen())
 	{
+	
 		for (size_t i = 0; i < Howmanyenemies; i++)
 		{
 			//Failure State
@@ -25,16 +27,24 @@ int main() {
 				player.setPosition(spawnpoint);
 			}
 		}
-
-		//FrameUpdates
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-			player.move(1, 0);
+		sf::Event ev;
+		while (window.pollEvent(ev))
+		{	
+			if (ev.type == sf::Event::GainedFocus) focus = true;
+			if (ev.type == sf::Event::LostFocus) focus = false;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-			player.move(0, -1);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-			player.move(0, 1);
+		if (focus)
+		{
+			//FrameUpdates
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+				player.move(1, 0);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+				player.move(0, -1);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+				player.move(0, 1);
+			}
 		}
 
 
