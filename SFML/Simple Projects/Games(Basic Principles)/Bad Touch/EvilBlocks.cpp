@@ -9,6 +9,7 @@ EvilBlocks::EvilBlocks(const int howmany)
 
 void EvilBlocks::GenerateEnemies(int const howmany)
 {
+	srand(time(0));
 	for (size_t i = 0; i < howmany; i++)
 	{
 		sf::RectangleShape enemy;
