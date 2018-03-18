@@ -3,7 +3,10 @@
 To-do:
 
 
+
 []Actual Victory Condition;
+
+[]Make Evilblocks not intersect;
 
 []Bound the window;
 
