@@ -10,7 +10,7 @@ public:
 private:
 	sf::RenderWindow* window;
 	sf::ConvexShape petal;
-	void CreatePetal(const double x, const double y);
+	void CreatePetal();
 	sf::Vector2f petal_position = petal.getPosition();
 };
 
