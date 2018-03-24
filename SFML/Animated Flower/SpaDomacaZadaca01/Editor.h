@@ -5,12 +5,15 @@
 class Editor
 {
 public:
-	Editor();
-	
-	void WritePosToFile(sf::ConvexShape towrite);
-	void ReadPosFromFile(sf::ConvexShape& toread);
-	void DragToMoveShape(sf::Event& event);
-	int FindCurrentMousedOverShape(std::vector<sf::Shape>& alltheshapes, sf::Event& event, sf::RenderWindow& window);
+	Editor(sf::RenderWindow* window);
+	//void WritePosToFile(sf::ConvexShape towrite);
+	//void ReadPosFromFile(sf::ConvexShape& toread);
+	void SaveShapestoFile(std::vector<sf::ConvexShape>& alltheshapes);
+	void LoadsShapestoFile(std::vector<sf::ConvexShape>& alltheshapes);
+	void DragToMoveShape(sf::Event & event, std::vector<sf::ConvexShape>& alltheshapes);
+	int FindCurrentMousedOverShape(std::vector<sf::ConvexShape>& alltheshapes, sf::Event& event);
 private:
+	sf::RenderWindow* window;
+	int mousedover = -1;
 };
 
