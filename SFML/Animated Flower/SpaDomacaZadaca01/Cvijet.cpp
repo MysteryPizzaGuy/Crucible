@@ -1,6 +1,7 @@
 #include "Cvijet.h"
 #include <cmath>
 #include "Editor.h"
+#include "ctime"
 
 Cvijet::Cvijet(sf::RenderWindow* window)
 {
@@ -80,5 +81,90 @@ const int NUMBEROFSIDES = 32;
 		core.setOrigin((core.getPoint(0) + core.getPoint(NUMBEROFSIDES/2))*0.5f);
 
 }
+
+void Cvijet::Animation(std::vector<sf::ConvexShape>& alltheshapes,bool epilepsy)
+{	
+	if (epilepsy) {
+		bool deltarand = (rand() % 2);
+		bool deltarandvert = (rand() % 2);
+		unsigned int arr[3] = {};
+		for (size_t i = 0; i < alltheshapes.size(); i++)
+		{
+			for (size_t i = 0; i <3; i++)
+			{
+				arr[i] = rand() % 255;
+			}
+			sf::Color randcolor (arr[0], arr[1], arr[2]);
+			alltheshapes[i].setFillColor(randcolor);
+			if (deltarand)
+			{
+				alltheshapes[i].move(1, 0);
+			}
+			else {
+				alltheshapes[i].move(-1, 0);
+			}
+			if (deltarandvert)
+			{
+				alltheshapes[i].move(0, 1);
+			}
+			else
+			{
+				alltheshapes[i].move(0, -1);
+			}
+		}
+	}
+	else {
+		if (MovementX>=LIMITX)
+		{
+			goright = false;
+		}
+		else if (MovementX <= -LIMITX)
+		{
+			goright = true;
+		}
+		if (MovementX==0)
+		{
+			godown = true;
+		}
+		if (MovementX==LIMITX || MovementX==-LIMITX)
+		{
+			godown = false;
+		}
+
+		for (size_t i = 0; i < alltheshapes.size(); i++)
+		{
+			if (goright)
+			{
+				alltheshapes[i].move(1, 0);
+			}
+			else {
+				alltheshapes[i].move(-1, 0);
+			}
+			if (godown)
+			{
+				alltheshapes[i].move(0, 1);
+			}
+			else
+			{
+				alltheshapes[i].move(0, -1);
+			}
+			
+		}
+		if (goright)
+		{
+			MovementX++;
+		}
+		else {
+			MovementX--;
+		}
+		if (godown)
+		{
+			MovementY++;
+		}
+		else {
+			MovementY--;
+		}
+	}
+	}
 
 

@@ -6,8 +6,6 @@ class Editor
 {
 public:
 	Editor(sf::RenderWindow* window);
-	//void WritePosToFile(sf::ConvexShape towrite);
-	//void ReadPosFromFile(sf::ConvexShape& toread);
 	void SaveShapestoFile(std::vector<sf::ConvexShape>& alltheshapes);
 	void LoadsShapestoFile(std::vector<sf::ConvexShape>& alltheshapes);
 	void DragToMoveShape(sf::Event & event, std::vector<sf::ConvexShape>& alltheshapes);

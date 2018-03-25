@@ -6,42 +6,6 @@ Editor::Editor(sf::RenderWindow* window)
 	this->window = window;
 }
 
-
-
-//
-//
-//void Editor::WritePosToFile(sf::ConvexShape towrite)
-//{
-//	std::ofstream Out("ShapePositions.csv");
-//	for (size_t i = 0; i < towrite.getPointCount(); i++)
-//	{
-//		Out << towrite.getPoint(i).x << ';' << towrite.getPoint(i).y << ',';
-//	}
-//	Out<<std::endl;
-//	Out.close();
-//}
-//
-//void Editor::ReadPosFromFile(sf::ConvexShape & toread)
-//{
-//	std::ifstream In("ShapePositions.csv");
-//	std::stringstream ss;
-//	for (size_t i = 0; i < toread.getPointCount(); i++)
-//	{
-//		std::string line;
-//		getline(In, line,';');
-//		ss << line;
-//		float x;
-//		ss >> x;
-//		getline(In, line, ',');
-//		ss << line;
-//		float y;
-//		ss >> y;
-//		toread.getPoint(i) = sf::Vector2f(x, y);
-//	}
-//	In.close();
-//
-//}
-
 int Editor::FindCurrentMousedOverShape(std::vector<sf::ConvexShape>& alltheshapes, sf::Event& event)
 {
 	//Returns the position(int) of the currently moused over shape
@@ -110,12 +74,6 @@ void Editor::DragToMoveShape(sf::Event & event,std::vector<sf::ConvexShape>& all
 	if (mousedover!=-1)// This guards against the program crashing due to vector subscript if one uses a hotkey without selecting a shape.
 	{
 		switch (event.type) {
-		/*case sf::Event::MouseButtonPressed:
-			if (event.mouseButton.button == sf::Mouse::Left)
-			{
-				mousedover = FindCurrentMousedOverShape(alltheshapes, event);
-			}
-			break;*/
 		case sf::Event::MouseMoved:
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && mousedover != -1)
 			{
@@ -131,12 +89,6 @@ void Editor::DragToMoveShape(sf::Event & event,std::vector<sf::ConvexShape>& all
 			{
 				alltheshapes[mousedover].rotate(-1);
 			}
-			/*	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Home) && mousedover != -1) {
-					alltheshapes[mousedover].scale(1.05f, 1.05f);
-				}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::End) && mousedover != -1) {
-					alltheshapes[mousedover].scale(1.05f, 1.05f);
-				}*/
 			break;
 		case sf::Event::MouseWheelMoved:
 			if (event.mouseWheel.delta > 0)

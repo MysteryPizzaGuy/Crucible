@@ -2,6 +2,7 @@
 #include "Editor.h"
 #include <iostream>
 #include <cmath>
+#include <ctime>
 //
 //int LocateCurrentMousedOver(std::vector<sf::RectangleShape>& alltheshapes, sf::Event& event, sf::RenderWindow& window) {
 //	
@@ -65,7 +66,12 @@ int main()
 		sf::ConvexShape core;
 		CreateCore(core);
 		core.setPosition(200, 200);
-
+		srand(time(nullptr));
+		float deltarand = (rand() % 1000) / 1000.00f - 0.5;
+		float deltarandvert = (rand() % 1000) / 1000.00f - 0.5;
+		std::cout << deltarand << " , ";
+		std::cout << deltarandvert;
+		std::cout << std::endl;
 		window.clear();
 		//window.draw(alltheshapes[0]);
 		//window.draw(alltheshapes[1]);
