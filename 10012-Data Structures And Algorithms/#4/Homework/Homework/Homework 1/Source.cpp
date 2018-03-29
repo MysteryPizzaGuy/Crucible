@@ -10,7 +10,7 @@ int main() {
 		v.push_back(j);
 		j = j + 1.1;
 		std::cout << "Values: ";
-		for (size_t i = 0; i < 50; i++)
+		for (size_t i = 0; i < v.getSize(); i++)
 		{
 			std::cout << v.at(i)<<" ";
 		}
