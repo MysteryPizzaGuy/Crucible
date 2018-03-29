@@ -12,24 +12,23 @@ MyVector::MyVector()
 MyVector::MyVector(unsigned n, double val)
 {
 	numbers = new double[n];
-	for (auto i = begin(); i < end(); ++i)
+	capacity = n;
+	for (auto i = 0; i < n; ++i)
 	{
-		*i = val;
+		numbers[i] = val;
 	}
 	size = n;
-	capacity = n;
 }
 
 MyVector::MyVector(unsigned n)
 {
 	numbers = new double[n];
-	size = n;
 	capacity = n;
 }
 
 MyVector::MyVector(std::initializer_list<double> il)
 {
-	numbers = new double(il.size());
+	numbers = new double[il.size()];
 	int j = 0;
 	for (auto i : il) {
 		numbers[j++] = i;
@@ -50,7 +49,7 @@ MyVector::iterator MyVector::end()
 
 void MyVector::insert(iterator pos, double val)
 {
-	if (capacity=size)
+	if (capacity==size)
 	{
 		Grow();
 	}
@@ -58,7 +57,7 @@ void MyVector::insert(iterator pos, double val)
 	int j = 0;
 	for (auto i = begin(); i < end();)
 	{
-		if (i!=pos&&tempcopy[j]!=val)
+		if (i==pos&&tempcopy[j-1]!=val)
 		{
 			tempcopy[j++] = val;
 		}

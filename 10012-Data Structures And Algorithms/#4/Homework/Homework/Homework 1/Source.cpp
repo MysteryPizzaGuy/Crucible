@@ -2,25 +2,16 @@
 #include "MyVector.h"
 
 int main() {
-	MyVector v;
-	std::cout << "Size: " << v.getSize() << " Capacity: " << v.getCapacity() << "\n";
 	double j = 0;
-	for (size_t i = 0; i < 25; i++)
+	MyVector v1(12, 2.2);
+	v1.insert(static_cast<unsigned>(0), 5.5);
+	v1.insert(v1.end()-1, 10.10);
+	for (size_t i = 0; i < v1.getSize(); i++)
 	{
-		v.push_back(j);
-		j = j + 1.1;
-		std::cout << "Values: ";
-		for (size_t i = 0; i < v.getSize(); i++)
-		{
-			std::cout << v.at(i)<<" ";
-		}
-		/*for (auto i : v) {
-			std::cout << i << " ";
-		}*/
-		std::cout << std::endl;
-		std::cout << "Size: " << v.getSize() << " Capacity: " << v.getCapacity() << "\n";
+		std::cout << v1.at(i) << " ";
 	}
-	
+	std::cout << std::endl;
+	std::cout << "Size: " << v1.getSize() << " Capacity: " << v1.getCapacity() << "\n";
 
 	std::cout<<std::endl;
 	return 0;
