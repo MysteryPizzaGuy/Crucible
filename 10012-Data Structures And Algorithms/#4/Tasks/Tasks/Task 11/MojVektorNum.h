@@ -1,5 +1,7 @@
 #pragma once
 #include <initializer_list>
+#include <stdexcept>
+
 class MojVektorNum
 {
 public:
@@ -7,8 +9,6 @@ public:
 public:
 
 	MojVektorNum();
-	MojVektorNum(unsigned n, int val);
-	MojVektorNum(unsigned n);
 	MojVektorNum(std::initializer_list <int> il);
 	iterator begin();
 	iterator end();
@@ -26,5 +26,4 @@ private:
 	unsigned const capacity = 100;
 	int* numbers = nullptr;
 private:
-	void Grow();
 };

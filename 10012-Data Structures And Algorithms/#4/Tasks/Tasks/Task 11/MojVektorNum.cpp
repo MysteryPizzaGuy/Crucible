@@ -1,5 +1,4 @@
 #include "MojVektorNum.h"
-#include <stdexcept>
 
 
 MojVektorNum::MojVektorNum()
