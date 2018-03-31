@@ -58,7 +58,7 @@ void MojVektorNum::insert(unsigned pos, int val)
 	}
 	int * tempcopy = new int[capacity];
 	int j = 0;
-	for (auto i = begin(); i < end(); i++)
+	for (auto i = begin(); i < end();)
 	{
 		if (j == pos)
 		{
@@ -66,6 +66,7 @@ void MojVektorNum::insert(unsigned pos, int val)
 		}
 		else {
 			tempcopy[j++] = *i;
+			i++;
 		}
 	}
 	delete[] numbers;
