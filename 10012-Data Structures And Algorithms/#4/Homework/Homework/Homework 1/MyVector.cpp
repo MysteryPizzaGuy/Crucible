@@ -66,19 +66,20 @@ void MyVector::insert(iterator pos, double val)
 			++i;
 		}
 	}
+	size++;
 	delete[] numbers;
 	numbers = tempcopy;
 }
 
 void MyVector::insert(unsigned pos, double val)
 {
-	if (capacity = size)
+	if (capacity == size)
 	{
 		Grow();
 	}
 	double * tempcopy = new double[capacity];
 	int j = 0;
-	for (auto i = begin(); i < end(); i++)
+	for (auto i = begin(); i < end();)
 	{
 		if (j==pos)
 		{
@@ -86,8 +87,10 @@ void MyVector::insert(unsigned pos, double val)
 		}
 		else {
 			tempcopy[j++] = *i;
+			i++;
 		}
 	}
+	size++;
 	delete[] numbers;
 	numbers = tempcopy;
 }

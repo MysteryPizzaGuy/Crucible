@@ -3,9 +3,8 @@
 
 int main() {
 	double j = 0;
-	MyVector v1(12, 2.2);
-	v1.insert(static_cast<unsigned>(0), 5.5);
-	v1.insert(v1.end()-1, 10.10);
+	MyVector v1(5, 2.2);
+	v1.insert(static_cast<unsigned>(2), 5.5);
 	for (size_t i = 0; i < v1.getSize(); i++)
 	{
 		std::cout << v1.at(i) << " ";
