@@ -10,7 +10,14 @@ MyList::MyList()
 void MyList::push_back(int val)
 {
 	iterator newNode = new Node;
-	
+	(*newNode).setVal(val);
+	(*current).setNodeNxt(newNode);
+	(*newNode).setNodePrev(current);
+}
+
+MyList::iterator MyList::begin()
+{
+	return head.getNodeNxt();
 }
 
 
@@ -62,4 +69,45 @@ void MyList::Node::setNodeNxt(iterator nodeNxt)
 void MyList::Node::setNodePrev(iterator nodePrev)
 {
 	this->nodePrev = nodePrev;
+}
+
+MyList::iterator::iterator()
+{
+	p = nullptr;
+}
+
+MyList::iterator::iterator(Node * ptr)
+{
+	p = ptr;
+}
+
+MyList::iterator::~iterator()
+{
+}
+
+MyList::iterator MyList::iterator::operator=(Node * ptr)
+{
+	return p = ptr;
+}
+
+MyList::iterator MyList::iterator::operator++()
+{
+	return p = &(p->getNodeNxt());
+}
+
+MyList::iterator MyList::iterator::operator--()
+{
+	return p = &(p->getNodePrev());
+}
+
+
+
+MyList::Node& MyList::iterator::operator*()
+{
+	return *p;
+}
+
+MyList::Node * MyList::iterator::operator&()
+{
+	return p;
 }

@@ -6,21 +6,23 @@ public:
 	//typedef Node* iterator;
 	class iterator
 	{
-		Node* p;
 	public:
-		
 		iterator();
+		iterator(Node* ptr);
 		~iterator();
 
-		iterator operator++() {
-			
-		}
+		iterator operator=(Node* ptr);
+		iterator operator++();
+		iterator operator--();
+		Node& operator*();
+		Node* operator&();
 	private:
-		Node* 
+		Node * p;
 	};
 public:
 	MyList();
 	void push_back(int val);
+	iterator begin();
 	~MyList();
 private:
 	class Node
@@ -42,8 +44,7 @@ private:
 	};
 private:
 	Node head;
+	iterator current =&head;
 	Node tail;
-	iterator current = head;
-
 };
 
