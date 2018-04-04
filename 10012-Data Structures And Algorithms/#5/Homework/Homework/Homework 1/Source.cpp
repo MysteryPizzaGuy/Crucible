@@ -4,9 +4,11 @@
 int main() {
 	MyList v;
 
-	v.push_back(12);
-	auto a= v.begin();
-	std::cout << (*a).getVal() << std::endl;
+	for (size_t i = 0; i < 11; i++)
+	{
+		v.push_back(i);
+	}
+	v.display();
 	
 
 

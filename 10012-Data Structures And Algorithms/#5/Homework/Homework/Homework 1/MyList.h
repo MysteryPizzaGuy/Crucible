@@ -1,50 +1,31 @@
 #pragma once
+#include <iostream>
 class MyList
 {
-class Node;
-public:
-	//typedef Node* iterator;
-	class iterator
+private:
+	struct Node
 	{
-	public:
-		iterator();
-		iterator(Node* ptr);
-		~iterator();
-
-		iterator operator=(Node* ptr);
-		iterator operator++();
-		iterator operator--();
-		Node& operator*();
-		Node* operator&();
-	private:
-		Node * p;
+		int val;
+		Node* nodeNxt = nullptr;
+		Node* nodePrev= nullptr;
 	};
 public:
-	MyList();
 	void push_back(int val);
-	iterator begin();
+	MyList();
+	void display()
+	{
+		Node *temp = new Node;
+		temp = head;
+		while (temp != nullptr)
+		{
+			std::cout << temp->val << "\n";
+			temp = temp->nodeNxt;
+		}
+	}
+	void pop_back();
 	~MyList();
 private:
-	class Node
-	{
-	public:
-		Node();
-		Node(iterator NodePrev, int val);
-		~Node();
-		iterator getNodeNxt() const;
-		iterator getNodePrev() const;
-		int getVal() const;
-		void setVal(int val);
-		void setNodeNxt(iterator nodeNxt);
-		void setNodePrev(iterator nodePrev);
-	private:
-		iterator nodeNxt;
-		iterator nodePrev;
-		int* val = new int;
-	};
-private:
-	Node head;
-	iterator current =&head;
-	Node tail;
+	Node * head;
+	Node * tail;
 };
 
