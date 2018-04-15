@@ -3,21 +3,16 @@
 #include <Windows.h>
 #include "ConsolManip.h"
 #include "Scene.h"
+#include "Snake.h"
 int main() {
 	ConsolManip::getInstance();
 	ConsolManip::SetWindowSize(100, 50);
-	const unsigned maxX = 49;
-	const unsigned maxY = 100;
+	const unsigned maxX = 100;
+	const unsigned maxY = 49;
 	Scene::getInstance(maxX, maxY);
 	Scene::createArena();
-	for (unsigned x = 0; x < maxX; x++)
-	{
-		for (unsigned  y = 0; y < maxY; y++)
-		{
-			std::cout << Scene::newScene[x][y];
-		}
-	}
-
+	Snake::Snake(4, maxX / 2, maxY / 2);
+	Scene::Update();
 		
 
 	return 0;

@@ -2,7 +2,7 @@
 Scene* Scene::instance = nullptr;
 char** Scene::oldScene =nullptr;
 char** Scene::newScene =nullptr;
-SHORT Scene::maxX = 100;
+SHORT Scene::maxX = 49;
 SHORT Scene::maxY = 100;
 Scene * Scene::getInstance(SHORT tmaxX, SHORT tmaxY)
 {
