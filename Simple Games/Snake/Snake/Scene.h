@@ -1,11 +1,24 @@
 #pragma once
+#include "ConsolManip.h"
 class Scene
 {
 public:
-	static Scene * getInstance();
+	static Scene * getInstance(SHORT maxX, SHORT maxY);
+	static void createArena();
+	static void Update();
+
+public:
+	static char** oldScene;
+	static char** newScene;
+
 private:
-	Scene() {};
+	Scene(SHORT const maxX, SHORT const maxY);
+	~Scene();
 	static Scene* instance;
+	static SHORT maxX;
+	static SHORT maxY;
+
+
 
 };
 
