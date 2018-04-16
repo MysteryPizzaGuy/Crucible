@@ -45,7 +45,10 @@ void Scene::Update()
 		}
 	}
 	std::cout.flush();
-	std::memcpy(oldScene, newScene, maxX*maxY);
+	for (size_t i = 0; i < maxX; i++)
+	{
+		std::memcpy(oldScene[i], newScene[i], sizeof(char)*maxY);
+	}
 }
 Scene::Scene(SHORT const maxX, SHORT const maxY) {
 	oldScene = new char*[maxX];

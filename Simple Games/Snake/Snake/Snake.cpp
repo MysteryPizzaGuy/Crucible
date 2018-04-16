@@ -2,7 +2,7 @@
 
 Snake::Snake(unsigned snakeSize, unsigned x, unsigned y)
 {
-	snakechars.push_back('▲');
+	snakechars.push_back('^');
 	for (size_t i = 0; i < snakeSize-1; i++)
 	{
 		snakechars.push_back('|');
@@ -10,7 +10,7 @@ Snake::Snake(unsigned snakeSize, unsigned x, unsigned y)
 	for (size_t i = 0; i < snakechars.size(); i++)
 	{
 		snakex.push_back(x);
-		snakey.push_back(y - i);
+		snakey.push_back(y + i);
 	}
 	for (unsigned i = 0; i < snakechars.size(); i++)
 	{
@@ -48,8 +48,8 @@ void Snake::updateSnake()
 			{
 				tempx = snakex[i];
 				tempy = snakey[i];
-				snakey[i]++;
-				snakechars[i] ='▲';
+				snakey[i]--;
+				snakechars[i] ='^';
 				continue;
 			}
 			tempx2=snakex[i];
@@ -77,8 +77,8 @@ void Snake::updateSnake()
 			{
 				tempx = snakex[i];
 				tempy = snakey[i];
-				snakey[i]++;
-				snakechars[i] = '►';
+				snakex[i]++;
+				snakechars[i] = '>';
 				continue;
 			}
 			tempx2 = snakex[i];
@@ -107,7 +107,7 @@ void Snake::updateSnake()
 				tempx = snakex[i];
 				tempy = snakey[i];
 				snakey[i]++;
-				snakechars[i] = '▼';
+				snakechars[i] = 'V';
 				continue;
 			}
 			tempx2 = snakex[i];
@@ -133,10 +133,10 @@ void Snake::updateSnake()
 		{
 			if (i == 0)
 			{
-				tempx = snakex[i];
-				tempy = snakey[i];
-				snakey[i]++;
-				snakechars[i] = '◄';
+				tempx = snakex[0];
+				tempy = snakey[0];
+				snakex[0]--;
+				snakechars[0] = '<';
 				continue;
 			}
 			tempx2 = snakex[i];
@@ -166,5 +166,90 @@ void Snake::updateSnake()
 	{
 		Scene::newScene[snakex[i]][snakey[i]] = snakechars[i];
 	}
-	Scene::newScene[tempx][tempy] = 0;
+	Scene::newScene[tempx][tempy] = ' ';
+}
+
+bool Snake::isSnakeColiding()
+{
+	if (snakex[0] == 0||snakex[0]==Scene::maxX)
+	{
+		return true;
+	}
+	if (snakey[0]==0||snakey[0]==Scene::maxY)
+	{
+		return true;
+	}
+	for (size_t i = 0; i < snakex.size(); i++)
+	{
+		for (size_t j = 0; j < snakex.size(); j++)
+		{
+			if (i==j)
+			{
+				continue;
+			}
+			if (snakex[i]==snakex[j]&&snakey[i]==snakey[j])
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void Snake::generateFruit()
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> disx(1, Scene::maxX - 1);
+	std::uniform_int_distribution<> disy(1, Scene::maxY - 1);
+	fruitx = disx(gen);
+	fruity = disy(gen);
+	ConsolManip::setCursorPosition(fruitx,fruity);
+	std::cout << '@';
+	std::cout.flush();
+}
+
+bool Snake::isFruitEaten()
+{
+	if (snakex[0]==fruitx&&snakey[0]==fruity)
+	{
+		ConsolManip::setCursorPosition(fruitx, fruity);
+		std::cout << " ";
+		return true;
+	}
+	return false;
+}
+
+void Snake::growSnake(unsigned byhowmuch)
+{
+	for (size_t i = 0; i < byhowmuch; i++)
+	{
+		unsigned s = snakechars.size() - 1;
+		snakechars.push_back(snakechars[s - 1]);
+
+		if (snakechars[s - 1] == '|')
+		{
+			if (snakey[s - 1] - snakey[s - 2]>0)
+			{
+				snakey.push_back(snakey[s - 1] + 1);
+				snakex.push_back(snakex[s - 1]);
+			}
+			else {
+				snakey.push_back(snakey[s - 1] - 1);
+				snakex.push_back(snakex[s - 1]);
+			}
+		}
+		else {
+			if (snakex[s - 1] - snakex[s - 2]>0)
+			{
+				snakex.push_back(snakex[s - 1] + 1);
+				snakey.push_back(snakey[s - 1]);
+			}
+			else {
+				snakex.push_back(snakex[s - 1] - 1);
+				snakey.push_back(snakey[s - 1]);
+			}
+		}
+	}
+
 }

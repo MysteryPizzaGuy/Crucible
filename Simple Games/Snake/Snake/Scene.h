@@ -6,6 +6,8 @@ public:
 	static Scene * getInstance(SHORT maxX, SHORT maxY);
 	static void createArena();
 	static void Update();
+	static SHORT maxX;
+	static SHORT maxY;
 
 public:
 	static char** oldScene;
@@ -15,9 +17,7 @@ private:
 	Scene(SHORT const maxX, SHORT const maxY);
 	~Scene();
 	static Scene* instance;
-	static SHORT maxX;
-	static SHORT maxY;
-
+	
 
 
 };
