@@ -15,5 +15,4 @@ QTTestApp::QTTestApp(QWidget *parent)
 		qApp->setStyleSheet(ts.readAll());
 	}
 	ui.setupUi(this);
-	connect(ui.horizontalSlider, SIGNAL(valueChanged(int)), ui.progressBar, SLOT(setValue(int)));
 }

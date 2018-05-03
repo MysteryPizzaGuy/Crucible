@@ -13,14 +13,14 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QProgressBar>
-#include <QtWidgets/QSlider>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -30,55 +30,76 @@ class Ui_QTTestAppClass
 {
 public:
     QWidget *centralWidget;
-    QTextEdit *textEdit;
-    QWidget *widget;
     QVBoxLayout *verticalLayout;
-    QSlider *horizontalSlider;
-    QProgressBar *progressBar;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
+    QPushButton *pushButton;
+    QHBoxLayout *horizontalLayout;
+    QFrame *frame;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButton_2;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout_2;
+    QTextEdit *textEdit;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *QTTestAppClass)
     {
         if (QTTestAppClass->objectName().isEmpty())
             QTTestAppClass->setObjectName(QStringLiteral("QTTestAppClass"));
-        QTTestAppClass->resize(600, 400);
+        QTTestAppClass->resize(695, 504);
         centralWidget = new QWidget(QTTestAppClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(170, 80, 251, 31));
-        textEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
-        textEdit->setFocusPolicy(Qt::StrongFocus);
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 10, 89, 48));
-        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalSlider = new QSlider(widget);
-        horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setOrientation(Qt::Horizontal);
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        verticalLayout->addWidget(horizontalSlider);
+        verticalLayout->addWidget(pushButton);
 
-        progressBar = new QProgressBar(widget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setValue(24);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        frame = new QFrame(centralWidget);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        horizontalLayout_2 = new QHBoxLayout(frame);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        verticalLayout->addWidget(progressBar);
+        horizontalLayout_2->addWidget(pushButton_2);
+
+        scrollArea = new QScrollArea(frame);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 572, 413));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        textEdit = new QTextEdit(scrollAreaWidgetContents);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+
+        verticalLayout_2->addWidget(textEdit);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        horizontalLayout_2->addWidget(scrollArea);
+
+
+        horizontalLayout->addWidget(frame);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         QTTestAppClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(QTTestAppClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 21));
-        QTTestAppClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(QTTestAppClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        QTTestAppClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(QTTestAppClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         QTTestAppClass->setStatusBar(statusBar);
@@ -91,6 +112,8 @@ public:
     void retranslateUi(QMainWindow *QTTestAppClass)
     {
         QTTestAppClass->setWindowTitle(QApplication::translate("QTTestAppClass", "QTTestApp", nullptr));
+        pushButton->setText(QApplication::translate("QTTestAppClass", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("QTTestAppClass", "PushButton", nullptr));
     } // retranslateUi
 
 };
