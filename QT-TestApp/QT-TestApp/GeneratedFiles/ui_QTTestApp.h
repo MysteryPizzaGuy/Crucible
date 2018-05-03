@@ -19,7 +19,9 @@
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,8 +30,11 @@ class Ui_QTTestAppClass
 {
 public:
     QWidget *centralWidget;
-    QProgressBar *progressBar;
+    QTextEdit *textEdit;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
     QSlider *horizontalSlider;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -41,14 +46,31 @@ public:
         QTTestAppClass->resize(600, 400);
         centralWidget = new QWidget(QTTestAppClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        progressBar = new QProgressBar(centralWidget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(180, 160, 118, 23));
-        progressBar->setValue(24);
-        horizontalSlider = new QSlider(centralWidget);
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(170, 80, 251, 31));
+        textEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
+        textEdit->setFocusPolicy(Qt::StrongFocus);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(10, 10, 89, 48));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalSlider = new QSlider(widget);
         horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setGeometry(QRect(160, 120, 160, 19));
         horizontalSlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout->addWidget(horizontalSlider);
+
+        progressBar = new QProgressBar(widget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setValue(24);
+
+        verticalLayout->addWidget(progressBar);
+
         QTTestAppClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QTTestAppClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
