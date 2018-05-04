@@ -13,7 +13,9 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
@@ -31,10 +33,15 @@ class Ui_QTTestAppClass
 public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
+    QGroupBox *groupBox;
+    QHBoxLayout *horizontalLayout_3;
+    QComboBox *comboBox;
     QPushButton *pushButton;
     QHBoxLayout *horizontalLayout;
     QFrame *frame;
     QHBoxLayout *horizontalLayout_2;
+    QFrame *frame_2;
+    QVBoxLayout *verticalLayout_3;
     QPushButton *pushButton_2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -46,17 +53,33 @@ public:
     {
         if (QTTestAppClass->objectName().isEmpty())
             QTTestAppClass->setObjectName(QStringLiteral("QTTestAppClass"));
-        QTTestAppClass->resize(695, 504);
+        QTTestAppClass->resize(730, 541);
         centralWidget = new QWidget(QTTestAppClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        pushButton = new QPushButton(centralWidget);
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        horizontalLayout_3 = new QHBoxLayout(groupBox);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        comboBox = new QComboBox(groupBox);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        horizontalLayout_3->addWidget(comboBox);
+
+        pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        verticalLayout->addWidget(pushButton);
+        horizontalLayout_3->addWidget(pushButton);
+
+
+        verticalLayout->addWidget(groupBox);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -69,17 +92,29 @@ public:
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton_2 = new QPushButton(frame);
+        frame_2 = new QFrame(frame);
+        frame_2->setObjectName(QStringLiteral("frame_2"));
+        frame_2->setFrameShape(QFrame::NoFrame);
+        frame_2->setFrameShadow(QFrame::Plain);
+        frame_2->setLineWidth(0);
+        verticalLayout_3 = new QVBoxLayout(frame_2);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        pushButton_2 = new QPushButton(frame_2);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        verticalLayout_3->addWidget(pushButton_2);
+
+
+        horizontalLayout_2->addWidget(frame_2);
 
         scrollArea = new QScrollArea(frame);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 572, 413));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 589, 430));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -112,6 +147,9 @@ public:
     void retranslateUi(QMainWindow *QTTestAppClass)
     {
         QTTestAppClass->setWindowTitle(QApplication::translate("QTTestAppClass", "QTTestApp", nullptr));
+        comboBox->setItemText(0, QApplication::translate("QTTestAppClass", "Character Burning", nullptr));
+        comboBox->setItemText(1, QApplication::translate("QTTestAppClass", "Character Layout", nullptr));
+
         pushButton->setText(QApplication::translate("QTTestAppClass", "PushButton", nullptr));
         pushButton_2->setText(QApplication::translate("QTTestAppClass", "PushButton", nullptr));
     } // retranslateUi
